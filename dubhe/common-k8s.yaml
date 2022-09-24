@@ -1,0 +1,95 @@
+train-job:
+  docker-dataset-path: "/dataset"
+
+k8s:
+  # k8s集群配置文件,路径为/Dubhe/dubhe-server/common-k8s/src/main/resources,将自己k8s集群的配置文件替换进去即可
+  kubeconfig: kubeconfig
+  # nfs服务暴露的IP地址 如需测试需修改为合适的地址
+  nfs: 10.0.0.124                    ###nfs节点地址
+  #nfs服务端 共享目录
+  nfs-root-path: /nfs/
+  nfs-root-windows-path: "Z:"
+   # 文件存储服务暴露的IP地址 如需测试需修改为合适的地址
+  file-store: 10.0.0.124
+  #文件存储服务端 共享目录
+  file-store-root-path: /nfs/
+  file-store-root-windows-path: "Z:"
+  # 命名空间关键字
+  namespace: dubhe-server-cloud-prod   ###需要修改成这个
+  # k8s ingress域名 如需测试需修改为合适的域名,注意：需要为此域名配置泛域名解析到 k8s集群master节点的ip
+  host: notebook.duhao.com   ##和之前的泛域名解析相关
+  # k8s ingress-controller 对外port
+  port: 30865
+  # k8s ingress-controller 对外grpc port
+  https-port: 31287
+  # k8s 模型部署配置
+  serving:
+    # k8s 模型部署域名 如需测试需修改为合适的域名
+    host: serving.duhao.com    ###和之前泛域名解析相关
+    # tls 证书 crt
+    tls-crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURaVENDQWsyZ0F3SUJBZ0lVUHZEZGtTYXpiRHFneDJWWEFUNkJ3TlpFZyt3d0RRWUpLb1pJaHZjTkFRRUwKQlFBd1FqRWZNQjBHQTFVRUF3d1dLaTV6WlhKMmFXNW5kR1Z6ZEM1a2RXSm9aUzVoYVRFZk1CMEdBMVVFQ2d3VwpLaTV6WlhKMmFXNW5kR1Z6ZEM1a2RXSm9aUzVoYVRBZUZ3MHlNakE0TWpnd05qSTRNRGxhRncwek1qQTRNalV3Ck5qSTRNRGxhTUVJeEh6QWRCZ05WQkFNTUZpb3VjMlZ5ZG1sdVozUmxjM1F1WkhWaWFHVXVZV2t4SHpBZEJnTlYKQkFvTUZpb3VjMlZ5ZG1sdVozUmxjM1F1WkhWaWFHVXVZV2t3Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQgpEd0F3Z2dFS0FvSUJBUUM2MndjNTJOVlNTNGdQTlV1V202TnAzQVJtbHYvU29nakY1ZjZLS3dXM255UTllMnptClh5bVBWM1VpSkk2Yko0Vkg0MjNOLzduMTlzM1Q4OWt0M0l6bXN6eTUrbS9vM0pZcUNRT0RzK3o4WlZQOXlYQnQKc045cTdLTlZISElWdTVEY0pmVzg0RW53SWloSzRyVXdyNTJLWldPU3h1SHNoQXVnbDVnRDNETFZMSDQ2eDlzMQpJUE8vcjB4dnduU0dJcTJrNkJyL2xBVHpGTjBqVXF3RzVuaUJkZGl6RGtwajE0c01WYjBWaWk2WjhSeHFSNzNFCjc2WEIzZ2lrR0R5djAreENaQWsxYWZKelpaK2pyNnNNSXpNckZYNUVsV0hFWUFOZXZXSzZES2VSUG15WC9qckcKWExqTU52bklxUkZ1cFBMRGtYeU0zbzFFbjJ4NUFtYWc2Vis1QWdNQkFBR2pVekJSTUIwR0ExVWREZ1FXQkJTUQpLVGpDaW9yVDh5WjFGY1BScFFoQXdCY1RiakFmQmdOVkhTTUVHREFXZ0JTUUtUakNpb3JUOHlaMUZjUFJwUWhBCndCY1RiakFQQmdOVkhSTUJBZjhFQlRBREFRSC9NQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUEreENTU1RwVDEKa0ROcnVNNHY0elFBWU1SbFV4UXBQNldQL3poVW9vSGUzZ2o4R3FLa1dNQldDa3NkQUJlTmtTVzdYZDZXanB6WgpFd3k5OFkzQTZxc29XcTFwbFIxdGdhVHZqL1QzYjRqL1JaRG8wVng4MTJYNzdKVWd3K0NYVzNPRk01ZytHVkNwCjMwVUZITy85eVVsWVRUREFZbDlRRncrUjJNeXR6Z0JwVi9wRkkvSytCRUNQWWlFZ1VCQXUyQ1ZjaGN3Yjg1NXUKZERNWUhXL2JnTnVETFNEMDNMQk8vTy9DTEsyUFlURDc3eUdGQ0g3dmFPbXQ2Q2IyWlhYUTVnNjdCNENObG9QagpjdTIwWGVYRGVrZEcxSCtLVHlGenAyUG90TURkbEdIVi9mQ29EVGhySC9QOEYrT1ZFT1hDalpNUHN6aEkrR0N3CjRQbU1BeW1NRjVuNgotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    # tls 证书 key
+    tls-key: LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUV2Z0lCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQktnd2dnU2tBZ0VBQW9JQkFRQzYyd2M1Mk5WU1M0Z1AKTlV1V202TnAzQVJtbHYvU29nakY1ZjZLS3dXM255UTllMnptWHltUFYzVWlKSTZiSjRWSDQyM04vN24xOXMzVAo4OWt0M0l6bXN6eTUrbS9vM0pZcUNRT0RzK3o4WlZQOXlYQnRzTjlxN0tOVkhISVZ1NURjSmZXODRFbndJaWhLCjRyVXdyNTJLWldPU3h1SHNoQXVnbDVnRDNETFZMSDQ2eDlzMUlQTy9yMHh2d25TR0lxMms2QnIvbEFUekZOMGoKVXF3RzVuaUJkZGl6RGtwajE0c01WYjBWaWk2WjhSeHFSNzNFNzZYQjNnaWtHRHl2MCt4Q1pBazFhZkp6WloragpyNnNNSXpNckZYNUVsV0hFWUFOZXZXSzZES2VSUG15WC9qckdYTGpNTnZuSXFSRnVwUExEa1h5TTNvMUVuMng1CkFtYWc2Vis1QWdNQkFBRUNnZ0VBS2hHVC8rY2NxQW1QV1hVelRuWStCV0Jlc1VZLzFJbGNsa21nMURTNWRjemoKbU9BSDlabnBQbmQvVEsrVVY4US9FcDlXb25GM3liUEdSWGo2SllRcFNPdUR1WTl6MEthUlBHZUpIZ2JOVFVuMgo3Z1dEUlg3ejNodm03Z3VZZCtJaHpCN1R3N0Z2bEJ2c25HZU1TYWpRUEU5MWFwOVNVREN1ZVhxSDVCNllaenZaCnQxa1FTaHdoNGdiODJScldJKzJSME1SdExYV0x0Y1V1dkU2WUQrVU5nNFgyRytTMVdJK1FWK0U4NGRvZ04xdVQKNFhmWVVNRG9Wa0lCRWFVc1VBY1dqNjZHZUo1RWNvVi9Ubm1JSjVGQ3hxSlFmQzlPeHM4SG9uTzBkYXQ2b0VSawpGWTZBeWZTdHdMZVBFZGhhM1N6bEs5bDVtazJrVWkyYktPMnQzRnhSM1FLQmdRRGNLdmhFdE1hS09tMnlrbnpvCjI2WW1lbUNnODd0cjFUMXVOcVQ4K01scmdjdTF2SEFCQUJWSFpXVFNPSzRrbCthTm9zR1U5Q1FDT1pRWXVKRFQKa0l5bGN3dXoxbXErUlduRkZvN04wdlZEeTh4TE4wSnFoMExvOVc3dTdyeWUvd2owM2Urcjh4Um1TK3VXQnczVAppS1hGU0NTTlhIZDd0MEZzWG56UVJvL0Zad0tCZ1FEWlJDUjRlNWVKV3VneXlUemlOa3hWZ1NMdkpNemQxYXJNCjJXV1dnNEIrZ3BSd0k0N2dMSjg0QlJiNFlIb1VXNGxRSlJqL0pkTCtYOWNGcW0xblZPYUZ3b29KNmNqVDM0Y2cKSkkvNjlhbkdGTGErM2hEdW9ZNTE4UjNrSEthV2R0ajM3VjQ5bm43YnlRVS9ReG1PSWhuK3JSWm0yekU0ZEVOUApac0svK1pwZDN3S0JnSDRkRHdFc0c5M3FBaFFiM1BqMWVJTHA3cGZEaFVRTGJaaklMRkhMb0hTNGNKdTFTT01KCnpTYU1hZWdSRjQ5V2czWDJHTFRkOUJKaU1QYklJZzFONjRLS0Y5WDNxRVU5Tll6emt2RkxPYnFQN29IWE1YQWIKOHJQR2dyalNmN0VEblhuRjl4ZWpzYmUzSFVkZTJ3aWthWEJNRnNQeWgyNlNWaU5oTEZXUlZhRlpBb0dCQUtZdwplMzAxZkpweVVQN1g4NXhOVUdKdkh4dXlHSXJ2TDNEMk1jREo0ZlhqU0V2bXh4a3V5TE4vSVN6b0R6bVhNeGQ4CjZQdnlJTXkyM3JEVXhrNnVJSTdjV2Q1dlYxREp3SUNUdHhhTjUwaysrdkpReHI3aUVTaWlRTzBHQlY4K2xZUS8KcTBDVEJoSjBWM0Vta0Z1cU5od2FwZklUWkRqOHBhZ013SmM4QkJvZEFvR0JBS2p3NlY0cUtwRHpXaENPRFl0VAp2VklGSWx2MnZMcGJWN00vcFhiV3pvMnY5ZDU3Yyt2SDBaVnhmNVpUSlY4ZHlqeTFSY2dFUERScFl1dEVVRDFLCkN3MmJsTVF1UzRiM1loYWRaWjcwZmV1QVdXNTd5WStTa082azhCS2Z2dnk0a1pCYUFxR0hpcFRMUW1CckFWQmwKVVVOSHpOSjVYaHFseklaTDFxUVhRSmluCi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS0K
+  # elasticsearch暴露的服务地址
+  elasticsearch:
+    hostlist: 10.0.0.99:32321           ###master节点地址
+    # 日志采集配置信息
+    log:
+      type: _doc
+      # 过滤源字段
+      source_field: log,@timestamp,kubernetes.pod_name
+  # 异步回调
+  callback:
+    # boot 单机部署即回调本机实例
+    url: 10.0.0.118:${server.port}          ###后端节点地址
+    token:
+      # 秘钥
+      secret-key: 1qaz2wsx
+      # 过期时间（秒）
+      expire-seconds: 300
+  # 展示Pod的CPU使用率,Memory使用量,GPU使用率的grafana地址
+  pod:
+    metrics:
+      grafanaUrl: http://grafana.duhao.com:30006/d/job/monitor?orgId=1&refresh=5s&kiosk&var-pod=      ####和之前泛域名解析相关
+  prometheus:
+    url: http://10.0.0.99:30003/     ###换成部署grafana的地址一般是master
+    query: api/v1/query
+    query-range: api/v1/query_range
+    gpu-query-param: sum(container_accelerator_duty_cycle{pod="pod-name-placeholder"})by(pod,acc_id)
+    gpu-mem-total-query-param: sum(container_accelerator_memory_total_bytes{pod="pod-name-placeholder"})by(pod,acc_id)
+    gpu-mem-use-query-param: sum(container_accelerator_memory_used_bytes{pod="pod-name-placeholder"})by(pod,acc_id)
+    cpu-range-query-param: sum(rate(container_cpu_usage_seconds_total{image!="",pod="pod-name-placeholder"}[1m])) by (pod) / (sum(container_spec_cpu_quota{image!=""}/100000) by (pod)) * 100
+    mem-range-query-param: sum(container_memory_rss{image!="",pod="pod-name-placeholder"})
+    gpu-usage-query-param: sum by(Hostname,gpu)(DCGM_FI_PROF_GR_ENGINE_ACTIVE{pod!=""})
+    gpu-range-query-param: sum(container_accelerator_duty_cycle{pod="pod-name-placeholder"}) by (pod,acc_id)
+    gpu-mem-total-range-query-param: sum(container_accelerator_memory_total_bytes{pod="pod-name-placeholder"}) by (pod,acc_id)
+    gpu-mem-use-range-query-param: sum(container_accelerator_memory_used_bytes{pod="pod-name-placeholder"}) by (pod,acc_id)
+    gpu-usage-rate-query-param: topk(10,sort_desc(max_over_time(namespace:DCGM_FI_PROF_GR_ENGINE_ACTIVE:sumn[usage-rate-day])))
+    cpu-usage-rate-query-param: topk(10,sort_desc(max_over_time(namespace:container_cpu_user_seconds_total_sumn:raten[usage-rate-day])))
+    mem-usage-rate-query-param: topk(10,sort_desc(max_over_time(namespace:CONTAINER_MEMERY_USAGE_BYTES:sumn{namespace=~"namespace.*"}[usage-rate-day])))
+    gpu-usage-namespace-query-param: max_over_time(namespace:DCGM_FI_PROF_GR_ENGINE_ACTIVE:sumn{namespace=~"namespace-placeholder"}[usage-rate-day])
+    cpu-usage-namespace-query-param: max_over_time(namespace:container_cpu_user_seconds_total_sumn:raten{namespace=~"namespace-placeholder"}[usage-rate-day])
+    mem-usage-namespace-query-param: max_over_time(namespace:CONTAINER_MEMERY_USAGE_BYTES:sumn{namespace=~"namespace-placeholder"}[usage-rate-day])
+  nfs-storage-class-name: zjlab-nfs-storage
+  namespace-limits:
+    cpu: 10
+    memory: 32
+    gpu: 2
+#配置harbor
+harbor:
+  address: harbor.wsco.com        ##和部署时填写的配置文件一样
+  username: admin
+  password: Harbor12345
+  model-name: train
+
+# minio配置
+minio:  
+  url: http://10.0.0.124:9000/    ##部署节点
+  accessKey: admin
+  secretKey: 123@abc.com
+  bucketName: dubhe-prod         ##部署节点相关
+  presignedUrlExpiryTime: 300
+  annotation: /annotation/
+
+docker:
+  remote-api-port: 2375
